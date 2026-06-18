@@ -27,8 +27,7 @@
   }
   // 他ページへのリンクを base に応じて解決
   function hrefFor(file) {
-    if (file === "index.html") return BASE === "./" ? "index.html" : "../index.html";
-    return BASE === "./" ? "pages/" + file : file; // pages 同士は同階層
+    return file; // フラット構成: 全ファイルが同一階層
   }
 
   function dotsMarkup(level) {
@@ -44,7 +43,7 @@
   }
 
   // ---- fetch -----------------------------------------------------------
-  fetch(BASE + "data/issues.json", { cache: "no-cache" })
+  fetch(BASE + "issues.json", { cache: "no-cache" })
     .then(function (r) {
       if (!r.ok) throw new Error("HTTP " + r.status);
       return r.json();
@@ -63,7 +62,7 @@
     s.appendChild(t);
     var m = el("div", "app-state__msg prose");
     m.innerHTML =
-      "<p>コンテンツ(<code>data/issues.json</code>)を読み込めませんでした。" +
+      "<p>コンテンツ(<code>issues.json</code>)を読み込めませんでした。" +
       "ファイルを直接開く(<code>file://</code>)とブラウザの制約で読み込みに失敗します。</p>" +
       "<p>ローカルで確認するときは、プロジェクト直下で簡易サーバを起動してください:</p>" +
       "<p><code>python -m http.server</code> &nbsp;→&nbsp; <code>http://localhost:8000/</code></p>" +
