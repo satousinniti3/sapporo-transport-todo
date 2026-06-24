@@ -303,9 +303,15 @@
     (issue.sources || []).forEach(function (s) {
       var li = el("li");
       var safeUrl = esc(s.url || "");
-      li.innerHTML =
-        '<a href="' + safeUrl + '" target="_blank" rel="noopener noreferrer">' + esc(s.title || s.url) + "</a>" +
-        '<span class="src-url">' + safeUrl + "</span>";
+      if (safeUrl) {
+        li.innerHTML =
+          '<a href="' + safeUrl + '" target="_blank" rel="noopener noreferrer">' + esc(s.title || s.url) + "</a>" +
+          '<span class="src-url">' + safeUrl + "</span>";
+      } else {
+        li.innerHTML =
+          '<span class="src-noLink">' + esc(s.title || "") + "</span>" +
+          '<span class="src-url">未公開資料 ／ 独自研究</span>';
+      }
       ol.appendChild(li);
     });
     return ol;
