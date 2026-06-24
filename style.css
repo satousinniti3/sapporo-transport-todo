@@ -231,6 +231,7 @@ table.compare tbody tr:hover td, table.compare tbody tr:hover th { background: v
 }
 .source-list a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--hair-strong); text-underline-offset: 3px; }
 .source-list a:hover { color: var(--signal); text-decoration-color: var(--signal); }
+.source-list .src-noLink { color: var(--ink-2); font-style: italic; }
 .source-list .src-url { display: block; font-family: var(--f-mono); font-size: .7rem; color: var(--ink-3); margin-top: .15rem; word-break: break-all; }
 
 /* =============================================================
